@@ -1,0 +1,64 @@
+{
+  "associate": [
+    {
+      "id": "1",
+      "name": "Rohan",
+      "email": "rohan@gmail.com",
+      "phone": "9977665544",
+      "type": "CUSTOMER",
+      "address": "Ghatkopar",
+      "associategroup": "level1",
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "Omakr",
+      "email": "omakr@gmail.com",
+      "phone": "9977665544",
+      "type": "CUSTOMER",
+      "address": "Mulund",
+      "associategroup": "level2",
+      "status": true
+    },
+    {
+      "id": "3",
+      "name": "Vikas Lale",
+      "email": "vikas@gmail.com",
+      "phone": "9977665544",
+      "type": "level1",
+      "address": "Goregoan",
+      "associategroup": "CUSTOMER",
+      "status": true
+    },
+    {
+      "id": "4",
+      "name": "Venky",
+      "email": "venky@gmail.com",
+      "phone": "9977665544",
+      "type": "CUSTOMER",
+      "address": "Miraroad",
+      "associategroup": "level1",
+      "status": true
+    },
+    {
+      "id": "5",
+      "name": "Ankit",
+      "email": "ankit@gmail.com",
+      "phone": "9977665544",
+      "type": "CUSTOMER",
+      "address": "Vadala",
+      "associategroup": "level1",
+      "status": true
+    },
+    {
+      "id": "6",
+      "name": "Aditi",
+      "email": "aditi@gmail.com",
+      "phone": "9977665544",
+      "type": "SUPPLIER",
+      "address": "Ghatkopar",
+      "associategroup": "level1",
+      "status": true
+    }
+  ]
+}
