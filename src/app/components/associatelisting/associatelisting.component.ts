@@ -58,7 +58,6 @@ export class AssociatelistingComponent implements OnInit {
   }
 
   openPopup(code:number,title:string) {
-    this.store.dispatch(openpopup())
     this.dialog.open(AddassociateComponent, {
       width: '50%',
       enterAnimationDuration:'1000ms',
