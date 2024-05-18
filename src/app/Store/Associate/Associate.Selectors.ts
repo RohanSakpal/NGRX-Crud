@@ -1,12 +1,13 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { AssociateModel } from "../Model/Associate.model";
+import { associateAdopter } from "./Associate.State";
 
 const getassociatestate = createFeatureSelector<AssociateModel>('associate');
 
-export const getassociatelist = createSelector(getassociatestate,(state)=>{
-    return state.list;
-});
+const associateSelector = associateAdopter.getSelectors();
 
-export const getassociate = createSelector(getassociatestate,(state)=>{
-    return state.associateobj;
-})
+export const getassociatelist = createSelector(getassociatestate,associateSelector.selectAll);
+
+const selectedentities = createSelector(getassociatestate,associateSelector.selectEntities)
+
+export const getassociate =(id:number) => createSelector(selectedentities,(state)=> state[id]);

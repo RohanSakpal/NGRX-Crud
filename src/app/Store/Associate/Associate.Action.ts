@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store"
 import { Associate } from "../Model/Associate.model";
+import { Update } from "@ngrx/entity";
 
 export const LOAD_ASSOCIATE='[associate page]load associate';
 export const LOAD_ASSOCIATE_SUCCESS = '[associate page]load associate success';
@@ -30,7 +31,7 @@ export const getassociate = createAction(GET_ASSOCIATE,props<{id:number}>());
 export const getassociatesuccess = createAction(GET_ASSOCIATE_SUCCESS, props<{obj:Associate}>());
 
 export const updateassociate = createAction(UPDATE_ASSOCIATE, props<{inputdata:Associate}>());
-export const updateassociatesuccess = createAction(UPDATE_ASSOCIATE_SUCCESS, props<{inputdata:Associate}>());
+export const updateassociatesuccess = createAction(UPDATE_ASSOCIATE_SUCCESS, props<{inputdata:Update<Associate>}>());
 
 export const deleteassociate = createAction(DELETE_ASSOCIATE, props<{code:number}>());
 export const deleteassociatesuccess = createAction(DELETE_ASSOCIATE_SUCCESS, props<{code:number}>());

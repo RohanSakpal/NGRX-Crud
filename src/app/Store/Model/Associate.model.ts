@@ -1,3 +1,5 @@
+import { EntityState } from "@ngrx/entity"
+
 export interface Associate {
     id:number,
     name:string,
@@ -9,8 +11,8 @@ export interface Associate {
     status:boolean
 }
 
-export interface AssociateModel {
-    list:Associate[],
-    associateobj: Associate,
-    errormessage:string
+export interface AssociateModel extends EntityState<Associate>{
+    // list:Associate[],
+    // associateobj: Associate,
+    // errormessage:string
 }

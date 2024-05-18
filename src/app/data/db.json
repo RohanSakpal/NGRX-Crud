@@ -3,11 +3,11 @@
     {
       "id": "1",
       "name": "Rohan",
-      "email": "rohan@gmail.com",
+      "email": "rohan1@gmail.com",
       "phone": "9977665544",
-      "type": "CUSTOMER",
+      "type": "level1",
       "address": "Ghatkopar",
-      "associategroup": "level1",
+      "associategroup": "CUSTOMER",
       "status": true
     },
     {

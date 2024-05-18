@@ -24,6 +24,8 @@ export class AddassociateComponent implements OnInit {
   title: string = 'Create Associate'
   isEdit: boolean = false;
   dialogdata: any;
+  editcode!:number;
+  editdata!:Associate;
 
   constructor(private builder: FormBuilder, private ref: MatDialogRef<AddassociateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private store: Store
@@ -34,18 +36,22 @@ export class AddassociateComponent implements OnInit {
   ngOnInit(): void {
     this.dialogdata = this.data;
     this.title = this.dialogdata.title;
-    this.store.select(getassociate).subscribe((res: any) => {
-      this.associateForm.setValue({
-        id: res.id,
-        name: res.name,
-        email: res.email,
-        phone: res.phone,
-        address: res.address,
-        group: res.associategroup,
-        type: res.type,
-        status: res.status
-      })
-    })
+    this.editcode = this.dialogdata.code;
+    if(this.editcode>0) {
+      this.store.select(getassociate(this.editcode)).subscribe((res: any) => {
+        this.editdata = res as Associate;
+        this.associateForm.setValue({
+          id: res.id,
+          name: res.name,
+          email: res.email,
+          phone: res.phone,
+          address: res.address,
+          group: res.associategroup,
+          type: res.type,
+          status: res.status
+        })
+      });
+    }
   }
 
   associateForm = this.builder.group({

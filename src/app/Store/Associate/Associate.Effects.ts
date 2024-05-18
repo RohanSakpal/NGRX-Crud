@@ -4,6 +4,8 @@ import { addassociate, addassociatesuccess, deleteassociate, deleteassociatesucc
 import { catchError, exhaustMap, map, of, switchMap } from "rxjs";
 import { AssociateService } from "../../services/associate.service";
 import { showalert } from "../Common/App.Action";
+import { Update } from "@ngrx/entity";
+import { Associate } from "../Model/Associate.model";
 
 @Injectable()
 export class AssociateEffects {
@@ -60,7 +62,11 @@ export class AssociateEffects {
             switchMap((action) => {
                 return this.service.Update(action.inputdata).pipe(
                     switchMap((data) => {
-                        return of(updateassociatesuccess({ inputdata: action.inputdata }),
+                        const  updaterecord:Update<Associate> = {
+                            id:action.inputdata.id,
+                            changes:action.inputdata
+                        }
+                        return of(updateassociatesuccess({ inputdata: updaterecord }),
                         showalert({ message: 'Update Successfully', resulttype: 'pass' }))
                     }),
                     catchError((_error) => of(showalert({ message: 'Failed to update associate', resulttype: 'fail' })))

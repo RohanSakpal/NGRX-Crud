@@ -1,16 +1,6 @@
-import { AssociateModel } from "../Model/Associate.model";
+import { createEntityAdapter } from "@ngrx/entity";
+import { Associate, AssociateModel } from "../Model/Associate.model";
 
-export const AssociateState:AssociateModel={
-    list:[],
-    associateobj: {
-        id: 0,
-        name: "",
-        email: "",
-        phone: "",
-        type: "CUSTOMER",
-        address: "",
-        associategroup: "level1",
-        status: true
-    },
-    errormessage: ''
-}
+export const associateAdopter = createEntityAdapter<Associate>();
+
+export const AssociateState:AssociateModel=associateAdopter.getInitialState();
