@@ -12,7 +12,6 @@ export interface Associate {
 }
 
 export interface AssociateModel extends EntityState<Associate>{
-    // list:Associate[],
-    // associateobj: Associate,
-    // errormessage:string
+    errormessage:string,
+    isloading:boolean
 }

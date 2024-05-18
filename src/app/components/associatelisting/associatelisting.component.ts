@@ -13,7 +13,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import { AddassociateComponent } from '../addassociate/addassociate.component';
 import { Associate } from '../../Store/Model/Associate.model';
 import { Store } from '@ngrx/store';
-import { getassociatelist } from '../../Store/Associate/Associate.Selectors';
+import { getErrormessage, getassociatelist } from '../../Store/Associate/Associate.Selectors';
 import { deleteassociate, getassociate, loadassociate, openpopup } from '../../Store/Associate/Associate.Action';
 
 @Component({
@@ -36,6 +36,7 @@ import { deleteassociate, getassociate, loadassociate, openpopup } from '../../S
 export class AssociatelistingComponent implements OnInit {
   Associatelist!:Associate[];
   datasource:any;
+  errormessage='';
   displayedColumns : string[] = ['name','email','phone','address','type','group','status','action'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,12 +45,16 @@ export class AssociatelistingComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadassociate());
+    this.store.select(getErrormessage).subscribe(res=> {
+      this.errormessage = res;
+    })
     this.store.select(getassociatelist).subscribe(item => {
       this.Associatelist = item;
       this.datasource = new MatTableDataSource<Associate>(this.Associatelist);
 
       this.datasource.paginator = this.paginator;
       this.datasource.sort = this.sort;
+      
     })
   }
   

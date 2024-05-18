@@ -4,7 +4,13 @@ import { addassociate, addassociatesuccess, deleteassociatesuccess, getassociate
 
 const _AssociateReducer = createReducer(AssociateState,
     on(loadassociatesuccess, (state,action)=>{
-        return associateAdopter.setAll(action.list,state);
+        return associateAdopter.setAll(action.list,{
+            ...state,
+            errormessage:''
+        });
+    }),
+    on(loadassociatefail, (state,action)=>{
+        return {...state,errormessage:action.errormessage}
     }),
     on(addassociatesuccess, (state,action)=>{
         const _maxid= Math.max(...state.ids.map(item=> item as number));
